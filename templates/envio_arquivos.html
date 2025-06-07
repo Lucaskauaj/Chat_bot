@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Arquivos</title>
+  <link rel="stylesheet" href='/public/contatos.css'>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="/templates/index.html">Sobre</a></li>
+      <li><a href="/templates/adicionar_cont.html">Adicionar Contatos</a></li>
+      <li><a href="/templates/envio_arquivos.html">Enviar Arquivo</a></li>
+      <li><a href="/templates/List_contato.html">Lista de Contatos</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>Lista de Arquivos</h2>
+    <!-- Formulário para envio de arquivos -->
+<form id="formArquivo" enctype="multipart/form-data" class="form-arquivo">
+  <div class="form-group">
+    <label for="numero"><strong>Número (sem @c.us):</strong></label>
+    <input type="text" name="numero" id="numero" required placeholder="Ex: 5584999999999" />
+  </div>
+
+  <div class="form-group">
+    <label for="legenda"><strong>Legenda:</strong></label>
+    <input type="text" name="legenda" id="legenda" placeholder="Opcional" />
+  </div>
+
+  <div class="form-group">
+    <label for="arquivo"><strong>Arquivo:</strong></label>
+    <input type="file" name="arquivo" id="arquivo" required />
+  </div>
+
+  <button type="submit">Enviar Arquivo</button>
+</form>
+
+    <div id="status"></div>
+     <h2>Arquivos Enviados</h2>
+    <ul id="listaArquivos" class="contatos">
+      <!-- Preenchido via JS -->
+    </ul>
+  </div>
+
+  
+  <script src="/public/scripts/contatos.js"></script>
+  <script src="/public/scripts/MTcontatos.js"></script>
+  <script src="/public/scripts/qrcode.js"></script>
+  <script src="/public/scripts/bot.js"></script>
+  <script src="/public/scripts/arquivo.js"></script>
+  
+</body>
+</html>

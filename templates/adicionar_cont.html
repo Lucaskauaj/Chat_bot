@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <nav class="navbar">
+    <ul>
+      <li><a href="/templates/index.html">Sobre</a></li>
+      <li><a href="/templates/adicionar_cont.html">Adicionar Contatos</a></li>
+      <li><a href="/templates/envio_arquivos.html">Enviar Arquivo</a></li>
+      <li><a href="/templates/List_contato.html">Lista de Contatos</a></li>
+    </ul>
+  </nav>
+
+
+     <div class="container">
+    <h2>🤖 WhatsApp Chatbot</h2>
+
+    <div id="qr">
+      <h3>QR Code</h3>
+      <img id="qrcode" src="" alt="O QR Code vai aparecer aqui" width="250" />
+    </div>
+
+    <h3 id="adicionar">Adicionar Contatos</h3>
+    <div class="form-section">
+      <input type="text" id="nome" placeholder="Nome">
+      <input type="text" id="numero" placeholder="Número com DDI (ex: 5511999999999)">
+      <textarea id="mensagem" placeholder="Mensagem"></textarea>
+    </div>
+    <div class="d-grid gap-2">
+    <!-- <button onclick="enviarMensagens()" class="btn btn-primary" type="button">Enviar Mensagens</button> -->
+    <button onclick="adicionarContato()"class="btn btn-primary" type="button">Adicionar contato</button>
+    </div>
+</div>
+<script src="/public/scripts/contatos.js"></script>
+<script src="/public/scripts/MTcontatos.js"></script>
+<script src="/public/scripts/qrcode.js"></script>
+<script src="/public/scripts/bot.js"></script>
+</body>
+</html>

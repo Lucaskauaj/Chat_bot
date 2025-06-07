@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "mime-types": "^3.0.1",
+    "multer": "^2.0.1",
+    "node.js": "^0.0.1-security",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "whats.js": "^1.2.1",
+    "whatsapp-web.js": "^1.30.0"
+  }
+}

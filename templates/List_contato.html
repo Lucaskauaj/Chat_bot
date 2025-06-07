@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Contatos</title>
+  <link rel="stylesheet" href="/public/contatos.css">
+  <style>
+  </style>
+</head>
+<body>
+     <nav class="navbar">
+    <ul>
+      <li><a href="/templates/index.html">Sobre</a></li>
+      <li><a href="/templates/adicionar_cont.html">Adicionar Contatos</a></li>
+      <li><a href="/templates/envio_arquivos.html">Enviar Arquivo</a></li>
+      <li><a href="/templates/List_contato.html">Lista de Contatos</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>Lista de Contatos</h2>
+    <div id="lista-contatos"></div>
+    <p id="status"></p>
+    <button onclick="enviarMensagens()" id="enviar" type="button" class="btn btn-outline-primary">Enviar Mensagens</button>
+  </div>
+
+  <script src="/public/scripts/contatos.js"></script>
+  <script src="/public/scripts/MTcontatos.js"></script>
+  <script src="/public/scripts/qrcode.js"></script>
+  <script src="/public/scripts/bot.js"></script>
+</body>
+</html>
