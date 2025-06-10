@@ -12,19 +12,20 @@ const upload = multer({ dest: 'uploads/' });
 const caminhoContatos = path.join(__dirname, 'contatos', 'contatos.json');
 
 let qrData = null;
+const verificaresp = new Set();
 
 app.use(cors());
 app.use(express.json());
 app.use('/templates', express.static(path.join(__dirname, 'templates')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// Inicialização do cliente WhatsApp
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: { headless: true },
 });
 
-// Eventos do WhatsApp
+
 client.on('qr', async (qr) => {
     try {
         qrData = await qrcode.toDataURL(qr);
@@ -54,6 +55,13 @@ client.on('message', async (msg) => {
 
     if (numero.includes('@g.us')) return;
 
+    if (msg.fromMe) {
+        verificaresp.delete(numero);
+        return;
+    }
+
+    if (verificaresp.has(numero)) return;
+
     console.log(`📩 Mensagem recebida de ${numero}: ${texto}`);
 
     let resposta = '';
@@ -65,6 +73,15 @@ client.on('message', async (msg) => {
             "Olá! Eu sou o zezinho fui criado para conversar com você pelo WhatsApp e ajudar a automatizar o envio de mensagens e arquivos de forma prática.\n\n" +
             "Comigo, você pode cadastrar contatos, mandar mensagens em massa, compartilhar arquivos e gerenciar sua lista de destinatários com facilidade. A conexão é feita pelo WhatsApp Web, usando autenticação via QR Code — simples e segura!\n\n" +
             "Sou ideal para empresas, equipes de vendas, suporte ou qualquer pessoa que precise manter contato com várias pessoas ao mesmo tempo de forma automática e eficiente.";
+        const caminhoImagem = path.join(__dirname, 'public', 'img/panda.webp'); 
+        try {
+            await client.sendMessage(numero, 'Aqui está uma imagem informativa sobre o zezinho! 📸');
+            const buffer = await fs.readFile(caminhoImagem);
+            const media = new MessageMedia('image/webp', buffer.toString('base64'), 'info.webp');
+            await client.sendMessage(numero, media);
+        } catch (e) {
+            console.error('Erro ao enviar imagem:', e.message);
+        }
     } else if (texto === 'eu te amo') {
         resposta = 'Eu também te amo! ❤️';
     } else if (texto === 'harry lindo') {
@@ -75,6 +92,7 @@ client.on('message', async (msg) => {
 
     try {
         await client.sendMessage(numero, resposta);
+        verificaresp.add(numero); 
         console.log(`✅ Resposta enviada para ${numero}`);
     } catch (err) {
         console.error(`❌ Erro ao responder ${numero}: ${err.message}`);
@@ -192,7 +210,7 @@ app.post('/enviar-arquivo', upload.single('arquivo'), async (req, res) => {
     }
     const caminhoHistorico = path.join(__dirname, 'contatos', 'arquivos_enviados.json');
 
-// Adiciona no try, logo após `await client.sendMessage...`:
+
 const historico = {
   nomeArquivo: file.originalname,
   numero,
@@ -226,7 +244,7 @@ app.get('/arquivos-enviados', async (req, res) => {
   }
 });
 
-// Rotas para páginas HTML
+// Rotas para os fetch de templates
 app.get('/adicionar_cont', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'adicionar_cont.html'));
 });
