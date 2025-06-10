@@ -12,3 +12,4 @@
 [0610/160319.084:INFO:CONSOLE(0)] "Document-Policy HTTP header: Unrecognized document policy feature name include-js-call-stacks-in-crash-reports.", source: https://web.whatsapp.com/ (0)
 [0610/160320.597:INFO:CONSOLE(163)] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yr/r/N0zeBJjq1VM.js (163)
 [0610/160548.317:INFO:CONSOLE(163)] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yr/r/N0zeBJjq1VM.js (163)
+[0610/161241.368:INFO:CONSOLE(163)] "Event handler of 'x-storagemutated-1' event must be added on the initial evaluation of worker script.", source: https://static.whatsapp.net/rsrc.php/v4/yr/r/N0zeBJjq1VM.js (163)
