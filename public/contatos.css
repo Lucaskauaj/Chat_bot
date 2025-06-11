@@ -153,3 +153,9 @@ button:hover {
   background: #fff;
 }
 
+#listaArquivos li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+ 
+}

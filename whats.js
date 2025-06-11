@@ -12,7 +12,7 @@ const upload = multer({ dest: 'uploads/' });
 const caminhoContatos = path.join(__dirname, 'contatos', 'contatos.json');
 
 let qrData = null;
-const verificaresp = new Set();
+// const verificaresp = new Set();
 
 app.use(cors());
 app.use(express.json());
@@ -48,19 +48,19 @@ client.initialize().catch((error) => {
     console.error('Erro ao inicializar o cliente do WhatsApp:', error.message);
 });
 
-// Recebimento de mensagens
+
 client.on('message', async (msg) => {
     const texto = msg.body.toLowerCase();
     const numero = msg.from;
 
     if (numero.includes('@g.us')) return;
 
-    if (msg.fromMe) {
-        verificaresp.delete(numero);
-        return;
-    }
+    // if (msg.fromMe) {
+    //     verificaresp.delete(numero);
+    //     return;
+    // }
 
-    if (verificaresp.has(numero)) return;
+    // if (verificaresp.has(numero)) return;
 
     console.log(`📩 Mensagem recebida de ${numero}: ${texto}`);
 
@@ -92,14 +92,14 @@ client.on('message', async (msg) => {
 
     try {
         await client.sendMessage(numero, resposta);
-        verificaresp.add(numero); 
+        // verificaresp.add(numero); 
         console.log(`✅ Resposta enviada para ${numero}`);
     } catch (err) {
         console.error(`❌ Erro ao responder ${numero}: ${err.message}`);
     }
 });
 
-// Rotas principais
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'index.html'));
 });
@@ -108,7 +108,7 @@ app.get('/qrcode', (req, res) => {
     res.json({ qr: qrData || null });
 });
 
-// Rotas de contatos
+
 app.post('/salvar-contatos', async (req, res) => {
     try {
         await fs.writeFile(caminhoContatos, JSON.stringify(req.body, null, 2));
@@ -151,7 +151,7 @@ app.delete('/contato/:numero', async (req, res) => {
     }
 });
 
-// Rotas de envio de mensagens
+
 app.post('/enviar-json', async (req, res) => {
     try {
         const data = await fs.readFile(caminhoContatos, 'utf8');
@@ -191,7 +191,7 @@ app.post('/enviar-selecionados', async (req, res) => {
     }
 });
 
-// Rota para envio de arquivos via WhatsApp
+
 app.post('/enviar-arquivo', upload.single('arquivo'), async (req, res) => {
     const { numero, legenda } = req.body;
     const file = req.file;

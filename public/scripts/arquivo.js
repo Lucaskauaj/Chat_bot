@@ -25,7 +25,7 @@ document.getElementById('formArquivo').addEventListener('submit', async (e) => {
         lista.reverse().forEach(arquivo => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <strong>Arquivo:</strong> ${arquivo.nomeArquivo}<br />
+            <strong>Arquivo:</strong> ${arquivo.nomeArquivo}<br/>
             <strong>Para:</strong> ${arquivo.numero}<br />
             <strong>Legenda:</strong> ${arquivo.legenda || '---'}<br />
             <strong>Data:</strong> ${new Date(arquivo.dataEnvio).toLocaleString()}
