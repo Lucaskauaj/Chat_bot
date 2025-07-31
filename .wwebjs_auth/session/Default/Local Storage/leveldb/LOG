@@ -1,3 +1,2 @@
-2025/07/30-18:41:32.704 3e54 Reusing MANIFEST D:\Chat_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/07/30-18:41:32.705 3e54 Recovering log #3
-2025/07/30-18:41:32.705 3e54 Reusing old log D:\Chat_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/000003.log 
+2025/07/31-17:44:02.102 bec Creating DB D:\Chat_bot\.wwebjs_auth\session\Default\Local Storage\leveldb since it was missing.
+2025/07/31-17:44:02.156 bec Reusing MANIFEST D:\Chat_bot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001

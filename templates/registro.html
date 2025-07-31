@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 ">
+
+  <!-- NAVBAR -->
+<nav class="bg-[#2c4156] shadow-md mb-6">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <a href="/templates/index.html" class="text-white font-semibold hover:text-blue-600 transition">Sobre</a>
+        <a href="/templates/adicionar_cont.html" class="text-white font-semibold hover:text-blue-600 transition">Adicionar Contatos</a>
+        <a href="/templates/envio_arquivos.html" class="text-white font-semibold hover:text-blue-600 transition">Enviar Arquivo</a>
+        <a href="/templates/List_contato.html" class="text-white font-semibold hover:text-blue-600 transition">Lista de Contatos</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="/templates/login.html" class="text-white font-semibold hover:text-blue-600 transition">Login</a>
+        <a href="/templates/registro.html" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition text-sm font-medium">Registrar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORM DE REGISTRO -->
+  <div class="flex items-center justify-center min-h-screen -mt-20">
+    <div class="bg-[#f1f5ff] p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Criar Conta</h2>
+      <form id="registroForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Nome</label>
+          <input type="text" name="nome" required class="w-full mt-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" name="email" required class="w-full mt-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Senha</label>
+          <input type="password" name="senha" required class="w-full mt-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Confirmar Senha</label>
+          <input type="password" name="confirmarSenha" required class="w-full mt-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-xl transition">
+          Registrar
+        </button>
+      </form>
+      <p class="text-sm text-center mt-4">
+        Já tem conta? <a href="/templates/login.html" class="text-blue-600 hover:underline">Entrar</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE REGISTRO -->
+  <script>
+    document.getElementById("registroForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const nome = e.target.nome.value;
+      const email = e.target.email.value;
+      const senha = e.target.senha.value;
+      const confirmarSenha = e.target.confirmarSenha.value;
+
+      if (senha != confirmarSenha) {
+        alert("As senhas não coincidem.");
+        return;
+      }
+
+      const res = await fetch("/registro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, senha })
+      });
+
+      if (res.ok) {
+        alert("Registro realizado com sucesso!");
+        window.location.href = "/templates/login.html";
+      } else {
+        alert("Erro ao registrar.");
+      }
+    });
+  </script>
+</body>
+</html>

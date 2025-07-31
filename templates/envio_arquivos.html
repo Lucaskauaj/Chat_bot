@@ -3,52 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <title>Lista de Arquivos</title>
-  <link rel="stylesheet" href='/public/contatos.css'>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="/templates/index.html">Sobre</a></li>
-      <li><a href="/templates/adicionar_cont.html">Adicionar Contatos</a></li>
-      <li><a href="/templates/envio_arquivos.html">Enviar Arquivo</a></li>
-      <li><a href="/templates/List_contato.html">Lista de Contatos</a></li>
-    </ul>
+<body class="bg-white text-gray-900 ">
+
+ <nav class="bg-[#2c4156] shadow-md mb-6">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <a href="/templates/index.html" class="text-white font-semibold hover:text-blue-600 transition">Sobre</a>
+        <a href="/templates/adicionar_cont.html" class="text-white font-semibold hover:text-blue-600 transition">Adicionar Contatos</a>
+        <a href="/templates/envio_arquivos.html" class="text-white font-semibold hover:text-blue-600 transition">Enviar Arquivo</a>
+        <a href="/templates/List_contato.html" class="text-white font-semibold hover:text-blue-600 transition">Lista de Contatos</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="/templates/login.html" class="text-white font-semibold hover:text-blue-600 transition">Login</a>
+        <a href="/templates/registro.html" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition text-sm font-medium">Registrar</a>
+      </div>
+    </div>
   </nav>
-  <div class="container">
-    <h2>Lista de Arquivos</h2>
-    <!-- Formulário para envio de arquivos -->
-<form id="formArquivo" enctype="multipart/form-data" class="form-arquivo">
-  <div class="form-group">
-    <label for="numero"><strong>Número (sem @c.us):</strong></label>
-    <input type="text" name="numero" id="numero" required placeholder="Ex: 5584999999999" />
-  </div>
+  <div class="border border-blue-300 max-w-2xl mx-auto mt-12 bg-[#f1f5ff] rounded-2xl shadow-lg p-6 sm:p-8">
+    <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">Lista de Arquivos</h2>
 
-  <div class="form-group">
-    <label for="legenda"><strong>Legenda:</strong></label>
-    <input type="text" name="legenda" id="legenda" placeholder="Opcional" />
-  </div>
+    <form id="formArquivo" enctype="multipart/form-data" class="space-y-6">
+      <div>
+        <label for="numero" class="block font-semibold mb-1">Número (sem @c.us):</label>
+        <input type="text" id="numero" name="numero" required placeholder="Ex: 5584999999999"
+          class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-  <div class="form-group">
-    <label for="arquivo"><strong>Arquivo:</strong></label>
-    <input type="file" name="arquivo" id="arquivo" required />
-  </div>
+      <div>
+        <label for="legenda" class="block font-semibold mb-1">Legenda:</label>
+        <input type="text" id="legenda" name="legenda" placeholder="Opcional"
+          class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-  <button type="submit">Enviar Arquivo</button>
-</form>
+      <div>
+        <label for="arquivo" class="block font-semibold mb-1">Arquivo:</label>
+        <input type="file" id="arquivo" name="arquivo" required
+          class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
 
-    <div id="status"></div>
-     <h2>Arquivos Enviados</h2>
-    <ul id="listaArquivos" class="contatos">
-      <!-- Preenchido via JS -->
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition">
+        Enviar Arquivo
+      </button>
+    </form>
+
+    <div id="status" class="mt-6 text-sm text-center text-gray-600"></div>
+
+    <h2 class="text-xl font-bold text-blue-600 mt-10 mb-4 text-center">Arquivos Enviados</h2>
+    <ul id="listaArquivos" class="space-y-2">
+      <!-- Itens preenchidos via JS -->
     </ul>
   </div>
 
-  
   <script src="/public/scripts/contatos.js"></script>
   <script src="/public/scripts/MTcontatos.js"></script>
   <script src="/public/scripts/qrcode.js"></script>
   <script src="/public/scripts/bot.js"></script>
   <script src="/public/scripts/arquivo.js"></script>
-  
 </body>
 </html>
