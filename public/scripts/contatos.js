@@ -18,11 +18,11 @@ async function salvarContatos() {
       body: JSON.stringify(contatos)
     });
     const data = await res.json();
-    document.getElementById('status').innerText = data.status || data.error;
-    await carregarContatos(); // Recarrega a lista após salvar
+    document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">${data.status || data.error}</span>`;
+    await carregarContatos(); 
   } catch (err) {
     console.error('Erro ao salvar contatos:', err);
-    document.getElementById('status').innerText = 'Erro ao salvar contatos.';
+    document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">Erro ao salvar contatos.</span>`;
   }
 }
 
@@ -83,31 +83,70 @@ function atualizarContatos() {
   const lista = document.getElementById('lista-contatos');
   lista.innerHTML = '';
 
+ 
+  lista.className = "space-y-4 max-h-96 overflow-y-auto";
+
+  const SelecionarTodos = document.createElement('div');
+  SelecionarTodos.className = "mb-4 flex items-center gap-2";
+  SelecionarTodos.innerHTML = `
+    <input type="checkbox" id="selecionar-todos" class="accent-blue-600 w-5 h-5 rounded border-gray-300 transition" />
+    <label for="selecionar-todos" class="text-sm font-semibold text-gray-700 select-none cursor-pointer">Selecionar todos</label>
+  `;
+  lista.appendChild(SelecionarTodos);
+
   contatos.forEach((c, index) => {
     const div = document.createElement('div');
-    div.className = 'contato';
+    div.className = "bg-white border border-blue-300 rounded-lg p-5 shadow-md text-sm text-gray-800 contato";
     div.innerHTML = `
-      <input type="checkbox" id="contato-${index}" />
-      <strong>${c.nome}</strong><br>
-      ${c.numero}<br>
-      ${c.mensagem}<br>
-      <button onclick="editarContato(${index})">✏️ Editar</button>
-      <button onclick="removerContato(${index})">🗑️ Remover</button>
+      <div class="flex items-start gap-4 flex-wrap">
+        <input type="checkbox" id="contato-${index}" 
+          class="mt-1 accent-blue-600 w-4 h-4 rounded-lg border-gray-300 transition contato-checkbox" />
+        <div class="flex-1">
+          <strong>${c.nome}</strong><br>
+          <span>${c.numero}</span>
+          <div class="mt-2 text-gray-700">${c.mensagem}</div>
+        </div>
+        <div class="flex flex-col gap-2 items-end ml-auto">
+          <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded-xl transition text-xs" onclick="editarContato(${index})">✏️ Editar</button>
+          <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-1 px-3 rounded-xl transition text-xs" onclick="removerContato(${index})">🗑️ Remover</button>
+        </div>
+      </div>
     `;
     lista.appendChild(div);
+  });
+
+  const selecionarTodos = document.getElementById('selecionar-todos');
+  selecionarTodos.addEventListener('change', function () {
+    const checkboxes = document.querySelectorAll('.contato-checkbox');
+    checkboxes.forEach(cb => cb.checked = selecionarTodos.checked);
   });
 }
 async function enviarMensagens() {
   try {
+    const selecionados = document.querySelectorAll('.contato-checkbox:checked');
+    if (selecionados.length === 0){
+      document.getElementById('status').innerHTML ='<span class="font-bold text-red-600">Selecione pelo menos um contato para enviar mensagens.</span>';
+      return;
+    }
+  
+    const statusRes = await fetch('/status');
+    const statusData = await statusRes.json();
+
+    if (!statusData.conectado) {
+      document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">Conecte o WhatsApp antes de enviar mensagens.</span>`;
+      return;
+    }
+
+    
     const res = await fetch('/enviar-json', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await res.json();
-    document.getElementById('status').innerText = data.status || data.error;
+    document.getElementById('status').innerHTML = `<span class="font-bold text-green-700">${data.status || data.error}</span>`;
   } catch (err) {
     console.error('Erro ao enviar mensagens:', err);
-    document.getElementById('status').innerText = 'Erro ao enviar mensagens.';
+    document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">Erro ao enviar mensagens. Conecte o WhatsApp antes de enviar mensagens</span>`;
   }
 }
 

@@ -6,7 +6,6 @@ const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const cors = require('cors');
 const mime = require('mime-types');
 const multer = require('multer');
-
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 const caminhoContatos = path.join(__dirname, 'contatos', 'contatos.json');
