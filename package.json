@@ -4,16 +4,24 @@
     "autoprefixer": {}
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "mime-types": "^3.0.1",
-    "multer": "^2.0.1",
+    "mongoose": "^8.17.0",
+    "multer": "^2.0.2",
     "node.js": "^0.0.1-security",
+    "nodemailer": "^6.4.11",
+    "path": "^0.12.7",
+    "puppeteer": "^18.2.1",
     "qrcode": "^1.5.4",
     "qrcode-terminal": "^0.12.0",
-    "whats.js": "^1.2.1",
-    "whatsapp-web.js": "^1.23.0"
+    "whatsapp-web.js": "^1.31.0",
+    "ws": "^8.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

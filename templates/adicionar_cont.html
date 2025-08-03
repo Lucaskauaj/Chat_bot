@@ -13,8 +13,8 @@
       <div class="flex items-center space-x-6">
         <a href="/templates/index.html" class="text-white font-semibold hover:text-blue-600 transition">Sobre</a>
         <a href="/templates/adicionar_cont.html" class="text-white font-semibold hover:text-blue-600 transition">Adicionar Contatos</a>
-        <a href="/templates/envio_arquivos.html" class="text-white font-semibold hover:text-blue-600 transition">Enviar Arquivo</a>
-        <a href="/templates/List_contato.html" class="text-white font-semibold hover:text-blue-600 transition">Lista de Contatos</a>
+        <a href="/templates/envioMensagens.html" class="text-white font-semibold hover:text-blue-600 transition">Enviar Arquivo</a>
+        <a href="/templates/Historico.html" class="text-white font-semibold hover:text-blue-600 transition">Historico</a>
       </div>
       <div class="flex items-center space-x-4">
         <a href="/templates/login.html" class="text-white font-semibold hover:text-blue-600 transition">Login</a>
@@ -27,28 +27,16 @@
     <h2 class="text-3xl font-bold mb-4 text-center">🤖 WhatsApp Chatbot</h2>
 
     <div id="qr" class="text-center mb-6">
-      <h3 class="text-xl font-semibold mb-2">QR Code</h3>
-      <img id="qrcode" src="" alt="O QR Code vai aparecer aqui" class="mx-auto w-64 h-64 object-contain" />
-    </div>
-
-    <h3 id="adicionar" class="text-xl font-semibold mb-4">Adicionar Contatos</h3>
-    <div class="space-y-3 mb-4">
-      <input type="text" id="nome" placeholder="Nome" 
-        class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      <input type="text" id="numero" placeholder="Número com DDI (ex: 5511999999999)" 
-        class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      <textarea id="mensagem" placeholder="Mensagem" rows="4"
-        class="w-full px-4 py-2 border border-gray-300 rounded shadow-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-    </div>
-
-    <div class="flex justify-center grid">
-      <button onclick="adicionarContato()" type="button" 
-        class="bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition">
-        Adicionar contato
-      </button>
-    </div>
+  <h3 class="text-xl font-semibold mb-2">QR Code</h3>
+  <p id="qr-message" class="text-green-700 font-bold mb-4">
+    QR Code vai aparecer aqui
+  </p>
+  <img id="qrcode"
+       alt="QR Code"
+       class="mx-auto w-64 h-64 object-contain hidden" />
   </div>
-<footer class="bg-[#2c4156] mt-16 py-6">
+  </div>
+<footer class="bg-[#2c4156] mt-auto py-6">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center px-4 gap-4">
       <div class="text-white text-center sm:text-left">
         <span class="font-semibold">Contato:</span>

@@ -1,3 +1,4 @@
+const contatos = [];
 async function carregarContatos() {
   try {
     const res = await fetch('/contatos');
@@ -130,6 +131,7 @@ async function enviarMensagens() {
     }
   
     const statusRes = await fetch('/status');
+    if (!statusRes.ok) throw new Error('Erro ao verificar conexão com WhatsApp.');
     const statusData = await statusRes.json();
 
     if (!statusData.conectado) {
@@ -138,15 +140,23 @@ async function enviarMensagens() {
     }
 
     
-    const res = await fetch('/enviar-json', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const contatosSelecionados = Array.from(selecionados).map(cb => {
+    const index = parseInt(cb.id.split('-')[1]);
+    return contatos[index];
     });
+
+    const res = await fetch('/enviar-selecionados', {
+   method: 'POST',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify(contatosSelecionados),
+    });
+
+
     const data = await res.json();
     document.getElementById('status').innerHTML = `<span class="font-bold text-green-700">${data.status || data.error}</span>`;
   } catch (err) {
     console.error('Erro ao enviar mensagens:', err);
-    document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">Erro ao enviar mensagens. Conecte o WhatsApp antes de enviar mensagens</span>`;
+    document.getElementById('status').innerHTML = `<span class="font-bold text-red-600">Erro ao enviar mensagens. Conecte o WhatsApp antes de enviar mensagens.</span>`;
   }
 }
 
