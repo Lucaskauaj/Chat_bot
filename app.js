@@ -14,7 +14,7 @@ async function criarPastas() {
     path.join(__dirname, 'contatos'),
     path.join(__dirname, 'sessions')
   ];
-
+// sucesso
   for (const pasta of pastas) {
     try {
       await fs.access(pasta);
