@@ -19,7 +19,7 @@ Este projeto é um **site/sistema de automação de mensagens** que permite o en
 ### 🗂 Simulação de banco de dados:
 
 * Os dados são armazenados em **arquivos `.json`** locais, que simulam o funcionamento de um banco.
-* Ex: `contatos.json`, `historico.json`, `comandos.json`, etc.
+* Ex: `contatos.json`, `arquivos_enviados.json`, `usuarios.json`, etc.
 
 ---
 
