@@ -1,10 +1,10 @@
-### 💬 Sistema de Automação de Mensagens via WhatsApp
+###  Sistema de Automação de Mensagens via WhatsApp
 
 Este projeto é um **site/sistema de automação de mensagens** que permite o envio de **mensagens de texto, imagens e arquivos PDF** para contatos cadastrados. Também possui um **bot de WhatsApp** que responde automaticamente mensagens recebidas com base em comandos definidos.
 
 ---
 
-### 🔧 Funcionalidades principais:
+###  Funcionalidades principais:
 
 * Cadastro e gerenciamento de contatos (armazenado em arquivos JSON)
 * Envio de mensagens individuais ou em massa
@@ -16,14 +16,14 @@ Este projeto é um **site/sistema de automação de mensagens** que permite o en
 
 ---
 
-### 🗂 Simulação de banco de dados:
+###  Simulação de banco de dados:
 
 * Os dados são armazenados em **arquivos `.json`** locais, que simulam o funcionamento de um banco.
 * Ex: `contatos.json`, `arquivos_enviados.json`, `usuarios.json`, etc.
 
 ---
 
-### 🚀 Tecnologias e dependências principais:
+###  Tecnologias e dependências principais:
 
 * **Back-end:** Node.js + Express
 * **Bot:** `whatsapp-web.js` com `puppeteer`
@@ -35,10 +35,9 @@ Este projeto é um **site/sistema de automação de mensagens** que permite o en
 
 ---
 
-### 🛠 Exemplos de comandos automáticos:
+###  Exemplos de comandos automáticos:
 
 * `"oi"` → responde `"Oi, tudo bem? Posso te ajudar?"`
-* `"#ajuda"` → lista os comandos disponíveis
-* Todos os comandos são editáveis via arquivo JSON
+* `"info"` → lista os comandos disponíveis
 
 ---
