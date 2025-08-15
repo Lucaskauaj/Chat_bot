@@ -2,10 +2,10 @@ class User {
     constructor(name, email, password) {
         this.name = name;
         this.email = email;
-        this.password = password; // Consider hashing the password before storing it
+        this.password = password; 
     }
 
-    // Method to validate user data
+  
     validate() {
         if (!this.name || !this.email || !this.password) {
             throw new Error("All fields are required.");
@@ -18,7 +18,7 @@ class User {
         }
     }
 
-    // Helper method to validate email format
+ 
     validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());

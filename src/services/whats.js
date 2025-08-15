@@ -64,15 +64,15 @@ client.on('message', async (msg) => {
     let resposta = '';
 
     if (texto === 'oi') {
-        resposta = "Oi! Tudo bem? 😊\n\nSou o zezinho! Veja alguns comandos que você pode usar:\n- oi\n- eu te amo\n- harry lindo\n- info";
+        resposta = "Oi! Tudo bem? 😊\n\nSou o TechnoBot! Veja alguns comandos que você pode usar:\n- oi\n- eu te amo\n- harry lindo\n- info";
     } else if (texto === 'info') {
         resposta =
-            "Olá! Eu sou o zezinho fui criado para conversar com você pelo WhatsApp e ajudar a automatizar o envio de mensagens e arquivos de forma prática.\n\n" +
+            "Olá! Eu sou o TechnoBot fui criado para conversar com você pelo WhatsApp e ajudar a automatizar o envio de mensagens e arquivos de forma prática.\n\n" +
             "Comigo, você pode cadastrar contatos, mandar mensagens em massa, compartilhar arquivos e gerenciar sua lista de destinatários com facilidade. A conexão é feita pelo WhatsApp Web, usando autenticação via QR Code — simples e segura!\n\n" +
             "Sou ideal para empresas, equipes de vendas, suporte ou qualquer pessoa que precise manter contato com várias pessoas ao mesmo tempo de forma automática e eficiente.";
         const caminhoImagem = path.join(__dirname, '..', '..', 'public', 'img/panda.webp');
         try {
-            await client.sendMessage(numero, 'Aqui está uma imagem informativa sobre o zezinho! 📸');
+            await client.sendMessage(numero, 'Aqui está uma imagem informativa sobre o TechnoBot! 📸');
             const buffer = await fs.readFile(caminhoImagem);
             const media = new MessageMedia('image/webp', buffer.toString('base64'), 'info.webp');
             await client.sendMessage(numero, media);
